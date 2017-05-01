@@ -103,3 +103,37 @@ export function voteArticleError (error) {
     data: error
   };
 }
+
+export function voteComment (comment_id, vote) {
+  return function (dispatch) {
+    dispatch(voteCommentRequest());
+    axios
+      .put(`${ROOT}/comments/${comment_id}?vote=${vote}`)
+      .then(res => {
+        dispatch(voteCommentSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(voteCommentError(err));
+      });
+  };
+}
+
+export function voteCommentRequest () {
+  return {
+    type: types.VOTE_COMMENT_REQUEST
+  };
+}
+
+export function voteCommentSuccess (votes) {
+  return {
+    type: types.VOTE_COMMENT_SUCCESS,
+    data: votes
+  };
+}
+
+export function voteCommentError (error) {
+  return {
+    type: types.VOTE_COMMENT_ERROR,
+    data: error
+  };
+}

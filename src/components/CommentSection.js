@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import {fetchComments} from '../actions/actions';
-import {Alert, ProgressBar} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { fetchComments, voteComment } from '../actions/actions';
+import { Alert, ProgressBar } from 'react-bootstrap';
 
 import ArticleComments from './ArticleComments';
 
@@ -26,7 +26,7 @@ class CommentSection extends Component {
   renderComments () {
     return this.props.comments.map((comment, key) => {
       if (comment.belongs_to === this.props.articleId) {
-        return <ArticleComments key={key} text={comment.body} author={comment.created_by} votes={comment.votes} />
+        return <ArticleComments key={key} comment_id={comment._id} text={comment.body} author={comment.created_by} votes={comment.votes} voteComment={this.props.voteComment.bind(null, comment._id)}/>
       }
     });
   }
@@ -43,6 +43,9 @@ function mapDispatchToProps (dispatch) {
   return {
     fetchComments: (id) => {
       dispatch(fetchComments(id));
+    },
+    voteComment: (id, vote) => {
+      dispatch(voteComment(id, vote));
     }
   };
 }
