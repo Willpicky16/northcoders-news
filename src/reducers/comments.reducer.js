@@ -1,32 +1,30 @@
 import * as types from '../actions/types';
 
 const initialState = {
-  articles: [],
+  comments: [],
   loading: false,
   error: null
 };
 
-export default function articlesReducer (prevState = initialState, action) {
+function commentsReducer (prevState = initialState, action) {
   switch (action.type) {
-    case types.FETCH_ARTICLES_REQUEST:
+    case types.FETCH_COMMENTS_REQUEST:
       return Object.assign({}, prevState, {
         loading: true
       });
-    case types.FETCH_ARTICLES_SUCCESS:
+    case types.FETCH_COMMENTS_SUCCESS:
       return Object.assign({}, prevState, {
-        articles: action.data,
+        comments: action.data,
         loading: false
       });
-    case types.FETCH_ARTICLES_ERROR:
+    case types.FETCH_COMMENTS_ERROR:
       return Object.assign({}, prevState, {
         error: action.error,
         loading: false
-      });
-    case types.VOTE_ARTICLE_SUCCESS:
-      return Object.assign({}, prevState, {
-        votes: action.data.votes
       });
     default:
       return prevState;
   }
 }
+
+export default commentsReducer;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchArticles } from '../actions/actions';
+import { fetchArticles, voteArticle } from '../actions/actions';
 import { ProgressBar, Alert } from 'react-bootstrap';
 
 import ArticleCard from './ArticleCard';
@@ -31,7 +31,7 @@ class TopicPage extends Component {
       return b.votes - a.votes;
     }).map((article, i) => {
       if (article.belongs_to === this.props.params.topic) {
-        return <ArticleCard key={i} article_id={article._id} title={article.title} votes={article.votes} topic={article.belongs_to} author={article.created_by} comments={article.comment_count}/>
+        return <ArticleCard key={i} article_id={article._id} title={article.title} votes={article.votes} topic={article.belongs_to} author={article.created_by} comments={article.comment_count} voteArticle={this.props.voteArticle.bind(null, article._id)}/>
       }
     });
   }
@@ -49,6 +49,9 @@ function mapDispatchToProps (dispatch) {
   return {
     fetchArticles: () => {
       dispatch(fetchArticles());
+    },
+    voteArticle: (id, vote) => {
+      dispatch(voteArticle(id, vote));
     }
   };
 }

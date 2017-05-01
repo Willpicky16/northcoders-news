@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchArticles } from '../actions/actions';
-import { ProgressBar, Alert } from 'react-bootstrap';
+import { ProgressBar, Alert, Button } from 'react-bootstrap';
 import SeparateArticle from './SeparateArticle';
+import CommentSection from './CommentSection';
+import CommentForm from './CommentForm';
 
 class ArticlePage extends Component {
+  constructor (props) {
+    super (props);
+    this.state = {
+      showCommentBox: false,
+      showComments: false
+    };
+    this.onClick = this.onClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+  }
   componentDidMount () {
     this.props.fetchArticles();
+  }
+  onClick (event) {
+    event.preventDefault();
+    this.setState({showCommentBox: !this.state.showCommentBox});
+  }
+  handleClick (event) {
+    event.preventDefault();
+    this.setState({showComments: !this.state.showComments});
   }
   render () {
     if (this.props.loading) return <ProgressBar active now={100}/>;
@@ -23,6 +42,14 @@ class ArticlePage extends Component {
         </div>
         <div className="ArticleList">
           {this.renderArticles()}
+          <span>
+            <Button className="btn btn-primary pull-right" onClick={this.onClick} href="#">Add New Comment</Button>
+            {this.state.showCommentBox && <CommentForm / >}
+          </span>
+          <span>
+            <Button className="btn btn-primary" onClick={this.handleClick} href="#">Show Comments</Button>
+            {this.state.showComments && <CommentSection articleId={this.props.params.article_id}/>}
+          </span>
         </div>
       </div>
     );

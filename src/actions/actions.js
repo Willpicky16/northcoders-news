@@ -35,3 +35,71 @@ export function fetchArticlesError (error) {
     data: error
   };
 }
+
+export function fetchComments (article_id) {
+  return function (dispatch) {
+    dispatch(fetchCommentsRequest());
+    axios
+      .get(`${ROOT}/articles/${article_id}/comments`)
+      .then((res) => {
+        dispatch(fetchCommentsSuccess(res.data.comments));
+      })
+      .catch((err) => {
+        dispatch(fetchCommentsError(err));
+      });
+  };
+}
+
+export function fetchCommentsRequest () {
+  return {
+    type: types.FETCH_COMMENTS_REQUEST
+  };
+}
+
+export function fetchCommentsSuccess (comments) {
+  return {
+    type: types.FETCH_COMMENTS_SUCCESS,
+    data: comments
+  };
+}
+
+export function fetchCommentsError (err) {
+  return {
+    type: types.FETCH_COMMENTS_ERROR,
+    data: err
+  };
+}
+
+export function voteArticle (article_id, vote) {
+  return function (dispatch) {
+    dispatch(voteArticleRequest());
+    axios
+      .put(`${ROOT}/articles/${article_id}?vote=${vote}`)
+      .then(res => {
+        dispatch(voteArticleSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(voteArticleError(err));
+      });
+  };
+}
+
+export function voteArticleRequest () {
+  return {
+    type: types.VOTE_ARTICLE_REQUEST
+  };
+}
+
+export function voteArticleSuccess (votes) {
+  return {
+    type: types.VOTE_ARTICLE_SUCCESS,
+    data: votes
+  };
+}
+
+export function voteArticleError (error) {
+  return {
+    type: types.VOTE_ARTICLE_ERROR,
+    data: error
+  };
+}
