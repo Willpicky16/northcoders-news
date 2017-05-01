@@ -11,7 +11,7 @@ import reducer from './reducers/index.reducer';
 
 import App from './components/App';
 import ArticleList from './components/ArticleList';
-import ArticlePage from './components/ArticlePage';
+import SeparateArticlePage from './components/SeparateArticlePage';
 import TopicPage from './components/TopicPage';
 import UserPage from './components/UserPage';
 
@@ -22,7 +22,7 @@ ReactDOM.render(
     <Router history={browserHistory}>
       <Route path='/' component={App}>
         <IndexRoute component={ArticleList}/>
-        <Route path='/articles/:article_id' component={ArticlePage}/>
+        <Route path='/articles/:article_id' component={SeparateArticlePage}/>
         <Route path='/topics/:topic/articles' component={TopicPage}/>
         <Route path='/users' component={UserPage}/>
       </Route>
