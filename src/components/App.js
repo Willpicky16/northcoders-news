@@ -8,8 +8,8 @@ export default class App extends Component {
       <div>
         <NavBar />
         <br /><br />
-        <div>
-          <h1>Hello</h1>
+        <div className="col-md-12">
+          {this.props.children}
         </div>
       </div>
     );
