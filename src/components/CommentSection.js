@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchComments, voteComment } from '../actions/actions';
+import { fetchComments, voteComment, addComment } from '../actions/actions';
 import { Alert, ProgressBar } from 'react-bootstrap';
 
 import ArticleComments from './ArticleComments';
@@ -46,6 +46,9 @@ function mapDispatchToProps (dispatch) {
     },
     voteComment: (id, vote) => {
       dispatch(voteComment(id, vote));
+    },
+    addComment: (id) => {
+      dispatch(addComment(id));
     }
   };
 }

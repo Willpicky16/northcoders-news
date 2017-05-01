@@ -70,6 +70,40 @@ export function fetchCommentsError (err) {
   };
 }
 
+export function fetchAllUsers () {
+  return function (dispatch) {
+    dispatch(fetchUsersRequest());
+    axios
+      .get(`${ROOT}/users`)
+      .then((res) => {
+        dispatch(fetchUsersSuccess(res.data.users));
+      })
+      .catch((err) => {
+        dispatch(fetchUsersError(err));
+      });
+  };
+}
+
+export function fetchUsersRequest () {
+  return {
+    type: types.FETCH_USERS_REQUEST
+  };
+}
+
+export function fetchUsersSuccess (users) {
+  return {
+    type: types.FETCH_USERS_SUCCESS,
+    data: users
+  };
+}
+
+export function fetchUsersError (err) {
+  return {
+    type: types.FETCH_USERS_ERROR,
+    data: err
+  };
+}
+
 export function voteArticle (article_id, vote) {
   return function (dispatch) {
     dispatch(voteArticleRequest());
@@ -134,6 +168,43 @@ export function voteCommentSuccess (votes) {
 export function voteCommentError (error) {
   return {
     type: types.VOTE_COMMENT_ERROR,
+    data: error
+  };
+}
+
+export function addComment (comment_id) {
+  return function (dispatch) {
+    dispatch(addCommentRequest());
+    axios
+      .put(`${ROOT}/comments/${comment_id}`, {
+        comment: 'hello',
+        belongs_to: '58e7822ecb7b77b6667c0a44'
+      })
+      .then(res => {
+        dispatch(addCommentSuccess(res.data));
+      })
+      .catch(err => {
+        dispatch(addCommentError(err));
+      });
+  };
+}
+
+export function addCommentRequest () {
+  return {
+    type: types.ADD_COMMENT_REQUEST
+  };
+}
+
+export function addCommentSuccess (comments) {
+  return {
+    type: types.ADD_COMMENT_SUCCESS,
+    data: comments
+  };
+}
+
+export function addCommentError (error) {
+  return {
+    type: types.ADD_COMMENT_ERROR,
     data: error
   };
 }

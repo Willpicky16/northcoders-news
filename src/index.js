@@ -14,6 +14,7 @@ import ArticleList from './components/ArticleList';
 import SeparateArticlePage from './components/SeparateArticlePage';
 import TopicPage from './components/TopicPage';
 import UserPage from './components/UserPage';
+import SeparateUserPage from './components/SeparateUserPage';
 
 const store = createStore(reducer, applyMiddleware(thunk, createLogger()));
 
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Route path='/articles/:article_id' component={SeparateArticlePage}/>
         <Route path='/topics/:topic/articles' component={TopicPage}/>
         <Route path='/users' component={UserPage}/>
+        <Route path='/users/:username' component={SeparateUserPage}/>
       </Route>
     </Router>
   </Provider>,

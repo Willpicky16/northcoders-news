@@ -4,7 +4,7 @@ import {fetchAllUsers} from '../actions/actions';
 import {ProgressBar, Alert} from 'react-bootstrap';
 import UserCard from './UserCard';
 
-class UserPage extends Component {
+class SeparateUserPage extends Component {
   componentDidMount () {
     this.props.fetchUsers();
   }
@@ -29,7 +29,9 @@ class UserPage extends Component {
   }
   renderUsers () {
     return this.props.users.map((user, key) => {
-      return <UserCard key={key} user_id={user.id} username={user.username} name={user.name} avatar_url={user.avatar_url}/>;
+      if (user.username === this.props.params.username) {
+        return <UserCard key={key} user_id={user.id} username={user.username} name={user.name} avatar_url={user.avatar_url}/>;
+      }
     });
   }
 }
@@ -51,4 +53,4 @@ function mapDispatchToProps (dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SeparateUserPage);
