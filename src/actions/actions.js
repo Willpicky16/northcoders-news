@@ -3,8 +3,8 @@ import {ROOT} from '../../config';
 import axios from 'axios';
 
 export function fetchArticles () {
-  return function dispatch () {
-    dispatch(fetchArticleRequest());
+  return function (dispatch) {
+    dispatch(fetchArticlesRequest());
     axios
       .get(`${ROOT}/articles`)
       .then ((res) => {
@@ -16,7 +16,7 @@ export function fetchArticles () {
   };
 }
 
-export function fetchArticleRequest () {
+export function fetchArticlesRequest () {
   return {
     type: types.FETCH_ARTICLES_REQUEST
   };
@@ -29,9 +29,9 @@ export function fetchArticlesSuccess (articles) {
   };
 }
 
-export function fetchArticlesError (err) {
+export function fetchArticlesError (error) {
   return {
     type: types.FETCH_ARTICLES_ERROR,
-    data: err
+    data: error
   };
 }

@@ -12,14 +12,15 @@ export default class NavBar extends Component {
               <span className="icon-bar"/>
               <span className="icon-bar"/>
             </button>
-            <a className="navbar-brand" href="/">Brand</a>
+            <a className="navbar-brand" href="/">Northcoders News</a>
           </div>
           <div id="navbar" className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li><a href="/">All Articles</a></li>
-              <li><a href="/">Football</a></li>
-              <li><a href="/">Coding</a></li>
-              <li><a href="/">Cooking</a></li>
+              <li><a href="/topics/football/articles">Football</a></li>
+              <li><a href="/topics/coding/articles">Coding</a></li>
+              <li><a href="/topics/cooking/articles">Cooking</a></li>
+              <li><a href="/users">Users</a></li>
             </ul>
           </div>
         </div>

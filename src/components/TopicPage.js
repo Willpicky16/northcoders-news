@@ -5,7 +5,7 @@ import { ProgressBar, Alert } from 'react-bootstrap';
 
 import ArticleCard from './ArticleCard';
 
-class ArticleList extends Component {
+class TopicPage extends Component {
   componentDidMount () {
     this.props.fetchArticles();
   }
@@ -30,7 +30,9 @@ class ArticleList extends Component {
     return this.props.articles.sort((a, b) => {
       return b.votes - a.votes;
     }).map((article, i) => {
-      return <ArticleCard key={i} article_id={article._id} title={article.title} votes={article.votes} topic={article.belongs_to} author={article.created_by} comments={article.comment_count}/>
+      if (article.belongs_to === this.props.params.topic) {
+        return <ArticleCard key={i} article_id={article._id} title={article.title} votes={article.votes} topic={article.belongs_to} author={article.created_by} comments={article.comment_count}/>
+      }
     });
   }
 }
@@ -51,4 +53,4 @@ function mapDispatchToProps (dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
+export default connect(mapStateToProps, mapDispatchToProps)(TopicPage);
