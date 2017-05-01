@@ -1,0 +1,8 @@
+{
+  "name": "northcoders-news-react",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Willpicky16/northcoders-news.git",
+  "author": "William Pickering <willpicky@gmail.com>",
+  "license": "MIT"
+}
