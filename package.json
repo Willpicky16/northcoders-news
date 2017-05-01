@@ -4,5 +4,37 @@
   "main": "index.js",
   "repository": "https://github.com/Willpicky16/northcoders-news.git",
   "author": "William Pickering <willpicky@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha ./spec --compilers js:babel-core/register",
+    "start": "webpack && src/index.js",
+    "dev": "webpack-dev-server",
+    "lint": "eslint ./"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-bootstrap": "^0.30.8",
+    "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-react": "^6.23.0",
+    "chai": "^3.5.0",
+    "css-loader": "^0.27.3",
+    "eslint": "^3.18.0",
+    "eslint-plugin-jsx": "0.0.2",
+    "eslint-plugin-react": "^6.10.3",
+    "redux-logger": "^2.10.2",
+    "style-loader": "^0.16.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.3.1",
+    "webpack-dev-server": "^2.4.2"
+  }
 }
