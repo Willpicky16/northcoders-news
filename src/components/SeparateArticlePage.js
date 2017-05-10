@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchArticles } from '../actions/actions';
+import { fetchArticles, addComment } from '../actions/actions';
 import { ProgressBar, Alert, Button } from 'react-bootstrap';
 import SeparateArticle from './SeparateArticle';
 import CommentSection from './CommentSection';
@@ -44,7 +44,7 @@ class ArticlePage extends Component {
           {this.renderArticles()}
           <span>
             <Button className="btn btn-primary pull-right" onClick={this.onClick} href="#">Add New Comment</Button>
-            {this.state.showCommentBox && <CommentForm / >}
+            {this.state.showCommentBox && <CommentForm addComment={this.props.addComment.bind(null, this.props.params.article_id)} / >}
           </span>
           <span>
             <Button className="btn btn-primary" onClick={this.handleClick} href="#">Show Comments</Button>
@@ -75,6 +75,9 @@ function mapDispatchToProps (dispatch) {
   return {
     fetchArticles: () => {
       dispatch(fetchArticles());
+    },
+    addComment: (id, comment) => {
+      dispatch(addComment(id, comment));
     }
   };
 }

@@ -172,13 +172,13 @@ export function voteCommentError (error) {
   };
 }
 
-export function addComment (comment_id) {
+export function addComment (article_id, comment) {
   return function (dispatch) {
     dispatch(addCommentRequest());
     axios
-      .put(`${ROOT}/comments/${comment_id}`, {
-        comment: 'hello',
-        belongs_to: '58e7822ecb7b77b6667c0a44'
+      .post(`${ROOT}/articles/${article_id}/comments`, {
+        body: comment,
+        belongs_to: article_id
       })
       .then(res => {
         dispatch(addCommentSuccess(res.data));

@@ -14,7 +14,10 @@ class CommentForm extends Component {
     });
   }
   handleForm () {
-    alert(this.state.comment);
+    this.props.addComment(this.state.comment);
+    setTimeout(function () {
+      window.location.reload();
+    }, 1000);
   }
   render () {
     return (

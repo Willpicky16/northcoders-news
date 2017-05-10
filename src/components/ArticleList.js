@@ -18,7 +18,7 @@ class ArticleList extends Component {
       </Alert>
     );
     return (
-      <div>
+      <div className="container">
         <h1>Articles:</h1>
         <div id="ArticleList">
           {this.renderArticles()}
