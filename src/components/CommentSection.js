@@ -26,7 +26,7 @@ class CommentSection extends Component {
   renderComments () {
     return this.props.comments.map((comment, key) => {
       if (comment.belongs_to === this.props.articleId) {
-        return <ArticleComments key={key} comment_id={comment._id} text={comment.body} author={comment.created_by} votes={comment.votes} voteComment={this.props.voteComment.bind(null, comment._id)}/>
+        return <ArticleComments key={key} comment_id={comment._id} text={comment.body} author={comment.created_by} votes={comment.votes} time={comment.created_at} voteComment={this.props.voteComment.bind(null, comment._id)}/>
       }
     });
   }
