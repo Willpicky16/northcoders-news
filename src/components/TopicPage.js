@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { fetchArticles, voteArticle } from '../actions/actions';
 import { ProgressBar, Alert } from 'react-bootstrap';
 
+import '../css/main.css';
+
 import ArticleCard from './ArticleCard';
+import Banner from './Banner';
 
 class TopicPage extends Component {
   componentDidMount () {
@@ -18,9 +21,9 @@ class TopicPage extends Component {
       </Alert>
     );
     return (
-      <div>
-        <h1>Articles:</h1>
-        <div id="ArticleList">
+      <div className="container">
+        <Banner topic={this.props.params.topic}/>
+        <div id="ArticleList" className="articleList">
           {this.renderArticles()}
         </div>
       </div>

@@ -1,3 +1,18 @@
-.hello {
+.background {
   background-color: lightblue;
+  padding-top: 25px;
+}
+
+.articleList {
+  padding-top: 20px;
+}
+
+.usersList {
+  padding-top: 20px;
+}
+
+.article {
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import '../css/main.css';
 
 import NavBar from './NavBar';
@@ -6,10 +7,9 @@ import NavBar from './NavBar';
 export default class App extends Component {
   render () {
     return (
-      <div className="hello">
+      <div className="background">
         <NavBar />
-        <br /><br /><br />
-        <div className="col-md-12">
+        <div className="col-md-12 background">
           {this.props.children}
         </div>
       </div>

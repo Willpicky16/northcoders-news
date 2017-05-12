@@ -3,7 +3,10 @@ import { connect } from 'react-redux';
 import { fetchArticles, voteArticle } from '../actions/actions';
 import { ProgressBar, Alert } from 'react-bootstrap';
 
+import '../css/main.css';
+
 import ArticleCard from './ArticleCard';
+import Banner from './Banner';
 
 class ArticleList extends Component {
   componentDidMount () {
@@ -19,8 +22,8 @@ class ArticleList extends Component {
     );
     return (
       <div className="container">
-        <h1>Articles:</h1>
-        <div id="ArticleList">
+        <Banner topic="All"/>
+        <div id="ArticleList" className="articleList">
           {this.renderArticles()}
         </div>
       </div>
@@ -30,7 +33,7 @@ class ArticleList extends Component {
     return this.props.articles.sort((a, b) => {
       return b.votes - a.votes;
     }).map((article, i) => {
-      return <ArticleCard key={i} article_id={article._id} title={article.title} votes={article.votes} topic={article.belongs_to} author={article.created_by} comments={article.comment_count} voteArticle={this.props.voteArticle.bind(null, article._id)}/>
+      return <ArticleCard key={i} article_id={article._id} title={article.title} votes={article.votes} topic={article.belongs_to} author={article.created_by} comments={article.comment_count} voteArticle={this.props.voteArticle.bind(null, article._id)}/>;
     });
   }
 }

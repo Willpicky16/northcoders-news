@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {fetchAllUsers} from '../actions/actions';
 import {ProgressBar, Alert} from 'react-bootstrap';
+
+// import '../css/main.css';
+
 import UserCard from './UserCard';
+import Banner from './Banner';
 
 class UserPage extends Component {
   componentDidMount () {
@@ -17,11 +21,9 @@ class UserPage extends Component {
       </Alert>
     );
     return (
-      <div>
-        <div className="">
-          <h1>Users:</h1>
-        </div>
-        <div id="ArticleList">
+      <div className="container">
+        <Banner topic="Users"/>
+        <div id="ArticleList" className="usersList">
           {this.renderUsers()}
         </div>
       </div>

@@ -6,12 +6,14 @@ import SeparateArticle from './SeparateArticle';
 import CommentSection from './CommentSection';
 import CommentForm from './CommentForm';
 
+import '../css/main.css';
+
 class ArticlePage extends Component {
   constructor (props) {
     super (props);
     this.state = {
       showCommentBox: false,
-      showComments: false
+      showComments: true
     };
     this.onClick = this.onClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -36,8 +38,8 @@ class ArticlePage extends Component {
       </Alert>
     );
     return (
-      <div>
-        <div className="">
+      <div className="jumbotron article">
+        <div className="backButton">
           <a href="/"><button className="btn btn-primary">Back</button></a>
         </div>
         <div className="ArticleList">
@@ -47,7 +49,7 @@ class ArticlePage extends Component {
             {this.state.showCommentBox && <CommentForm addComment={this.props.addComment.bind(null, this.props.params.article_id)} / >}
           </span>
           <span>
-            <Button className="btn btn-primary" onClick={this.handleClick} href="#">Show Comments</Button>
+            <Button className="btn btn-primary" onClick={this.handleClick} href="#">Hide Comments</Button>
             {this.state.showComments && <CommentSection articleId={this.props.params.article_id}/>}
           </span>
         </div>

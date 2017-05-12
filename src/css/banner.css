@@ -1,0 +1,35 @@
+.banner-All {
+  background-image: url('../../public/images/main.png');
+  height: 200px;
+  border-radius: 25px;
+}
+
+.banner-football {
+  background-image: url('../../public/images/football.png');
+  height: 200px;
+  border-radius: 25px;
+}
+
+.banner-coding {
+  background-image: url('../../public/images/coding.png');
+  height: 200px;
+  border-radius: 25px;
+}
+
+.banner-cooking {
+  background-image: url('../../public/images/cooking.png');
+  height: 200px;
+  border-radius: 25px;
+}
+
+.banner-Users {
+  background-image: url('../../public/images/main.png');
+  height: 200px;
+  border-radius: 25px;
+}
+
+.bannerTitle {
+  padding-top: 75px;
+  padding-left: 50px;
+  color: white;
+}
