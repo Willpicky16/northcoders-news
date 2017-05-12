@@ -14,4 +14,15 @@ const ArticleCard = function (props) {
   );
 };
 
+ArticleCard.propTypes = {
+  votes: React.PropTypes.number,
+  voteArticle: React.PropTypes.func,
+  article_id: React.PropTypes.string,
+  title: React.PropTypes.string,
+  author: React.PropTypes.string,
+  topic: React.PropTypes.string,
+  comments: React.PropTypes.string
+};
+
+
 export default ArticleCard;

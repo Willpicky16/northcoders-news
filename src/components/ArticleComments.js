@@ -15,8 +15,16 @@ const ArticleComments = function (props) {
 };
 
 function getTime (num) {
-  let date = moment(num)
-  return date.format('MMMM Do YYYY, h:mm:ss a')
+  let date = moment(num);
+  return date.format('MMMM Do YYYY, h:mm:ss a');
 }
+
+ArticleComments.propTypes = {
+  votes: React.PropTypes.number,
+  author: React.PropTypes.string,
+  voteComment: React.PropTypes.func,
+  text: React.PropTypes.string,
+  time: React.PropTypes.string
+};
 
 export default ArticleComments;

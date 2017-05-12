@@ -1,6 +1,11 @@
+body {
+  background-color: lightblue;
+}
+
 .background {
   background-color: lightblue;
   padding-top: 25px;
+  padding-bottom: 100px;
 }
 
 .articleList {
